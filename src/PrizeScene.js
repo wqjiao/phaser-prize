@@ -20,7 +20,7 @@ export class PrizeScene extends Phaser.Scene {
     preload() {
         // 修改图片路径
         this.load.setBaseURL("https://raw.githubusercontent.com/wqjiao/" +
-        "react-componts/master/");
+        "phaser-prize/master/");
         // 预加载图形
         this.load.image("wheel", "assets/wheel.png");
         this.load.image("pin", "assets/pin.png");
@@ -75,8 +75,13 @@ export class PrizeScene extends Phaser.Scene {
                 onComplete: () => {
                     // 修改执行状态
                     this.canSpin = true;
-                    // 记录旋转到的位置
-                    this.prizeText.text = this.slicePrizes[this.prize];
+                    // 抽到 'A KEY!!!' 开始游戏场景
+                    if ( this.slicePrizes[this.prize] === 'A KEY!!!') {
+                        this.scene.start("WelcomeScene");
+                    } else {
+                        // 记录旋转到的位置
+                        this.prizeText.text = this.slicePrizes[this.prize];
+                    }
                 }
             });
         }

@@ -1,4 +1,7 @@
 import "phaser";
+import { WelcomeScene } from "./WelcomeScene";
+import { GameScene } from "./GameScene";
+import { ScoreScene } from "./ScoreScene";
 import { PrizeScene } from "./PrizeScene";
 
 const config = {
@@ -7,7 +10,7 @@ const config = {
     height: 488,
     parent: "game",
     backgroundColor: "#880044",
-    scene: [PrizeScene], // 场景
+    scene: [PrizeScene, WelcomeScene, GameScene, ScoreScene], // 多场景
     physics: {
         default: "arcade",
         arcade: {
