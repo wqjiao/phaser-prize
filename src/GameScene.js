@@ -17,8 +17,10 @@ export class GameScene extends Phaser.Scene {
     }
 
     preload() {
+        // 修改图片基本路径
         this.load.setBaseURL("https://raw.githubusercontent.com/wqjiao/" +
             "phaser-prize/master/");
+        // 预加载图片
         this.load.image("star", "assets/star.png");
         this.load.image("sand", "assets/sand.jpg");
     }
@@ -68,6 +70,7 @@ export class GameScene extends Phaser.Scene {
             this.time.delayedCall(100, function (star) {
                 star.destroy();
                 if (this.starsFallen > 2) {
+                    // 分数场景
                     this.scene.start("ScoreScene", { starsCaught: this.starsCaught });
                 }
             }, [star], this);
@@ -76,14 +79,17 @@ export class GameScene extends Phaser.Scene {
 
     emitStar() {
         var star;
+        // 随机生成坐标值
         var x = Phaser.Math.Between(25, 450);
         var y = 26;
+        // 添加星星至canvas
         star = this.physics.add.image(x, y, "star");
 
         star.setDisplaySize(50, 50);
         star.setVelocity(0, 200);
         star.setInteractive();
 
+        // 点击星星，更新分数
         star.on('pointerdown', this.onClick(star), this);
         this.physics.add.collider(star, this.sand, this.onFall(star), null, this);
     }
