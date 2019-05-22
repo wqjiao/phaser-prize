@@ -1,18 +1,22 @@
-import "phaser";
-import { WelcomeScene } from "./WelcomeScene";
-import { GameScene } from "./GameScene";
-import { ScoreScene } from "./ScoreScene";
-import { PrizeScene } from "./PrizeScene";
+import 'phaser';
+import { WelcomeScene } from './WelcomeScene';
+import { GameScene } from './GameScene';
+import { ScoreScene } from './ScoreScene';
+import { PrizeScene } from './PrizeScene';
 
 const config = {
-    title: "Starfall",
+    title: 'Starfall',
     width: 458,
     height: 488,
-    parent: "game",
-    backgroundColor: "#880044",
+    parent: 'game',
+    backgroundColor: '#880044',
     scene: [PrizeScene, WelcomeScene, GameScene, ScoreScene], // 多场景
+    loader: {
+        baseURL: 'https://raw.githubusercontent.com/wqjiao/phaser-prize/master/',
+        crossOrigin: 'anonymous',
+    },
     physics: {
-        default: "arcade",
+        default: 'arcade',
         arcade: {
             debug: false
         }

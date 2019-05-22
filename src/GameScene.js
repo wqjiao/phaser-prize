@@ -1,11 +1,11 @@
 // 中间游戏页
-import "phaser";
+import 'phaser';
 
 export class GameScene extends Phaser.Scene {
 
     constructor() {
         super({
-            key: "GameScene"
+            key: 'GameScene'
         });
     }
 
@@ -18,11 +18,11 @@ export class GameScene extends Phaser.Scene {
 
     preload() {
         // 修改图片基本路径
-        this.load.setBaseURL("https://raw.githubusercontent.com/wqjiao/" +
-            "phaser-prize/master/");
+        this.load.setBaseURL('https://raw.githubusercontent.com/wqjiao/' +
+            'phaser-prize/master/');
         // 预加载图片
-        this.load.image("star", "assets/star.png");
-        this.load.image("sand", "assets/sand.jpg");
+        this.load.image('star', 'assets/star.png');
+        this.load.image('sand', 'assets/sand.jpg');
     }
 
     create() {
@@ -48,8 +48,8 @@ export class GameScene extends Phaser.Scene {
             this.emitStar();
         }
         this.info.text =
-            this.starsCaught + " caught - " +
-            this.starsFallen + " fallen (max 3)";
+            this.starsCaught + ' caught - ' +
+            this.starsFallen + ' fallen (max 3)';
     }
 
     onClick(star) {
@@ -71,7 +71,7 @@ export class GameScene extends Phaser.Scene {
                 star.destroy();
                 if (this.starsFallen > 2) {
                     // 分数场景
-                    this.scene.start("ScoreScene", { starsCaught: this.starsCaught });
+                    this.scene.start('ScoreScene', { starsCaught: this.starsCaught });
                 }
             }, [star], this);
         }
@@ -83,7 +83,7 @@ export class GameScene extends Phaser.Scene {
         var x = Phaser.Math.Between(25, 450);
         var y = 26;
         // 添加星星至canvas
-        star = this.physics.add.image(x, y, "star");
+        star = this.physics.add.image(x, y, 'star');
 
         star.setDisplaySize(50, 50);
         star.setVelocity(0, 200);
