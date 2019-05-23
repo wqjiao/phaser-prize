@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: [
+    // 'webpack-dev-server/client?http://localhost:8085/',
+    './src/app.js',
+  ],
   module: {
     rules: [
       {
@@ -16,7 +19,22 @@ module.exports = {
   },
   output: {
     filename: 'app.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: "http://localhost:8085/",
   },
-  mode: 'development'
+  mode: 'development',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: "./",
+    quiet: false, //控制台中不输出打包的信息
+    noInfo: false,
+    hot: true,
+    inline: true,
+    lazy: false,
+    progress: true, //显示打包的进度
+    watchOptions: {
+        aggregateTimeout: 300
+    },
+    port: '8085'
+  }
 };

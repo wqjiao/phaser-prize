@@ -12,7 +12,7 @@ const config = {
     backgroundColor: '#880044',
     scene: [PrizeScene, WelcomeScene, GameScene, ScoreScene], // 多场景
     loader: {
-        baseURL: 'https://raw.githubusercontent.com/wqjiao/phaser-prize/master/',
+        // baseURL: 'https://raw.githubusercontent.com/wqjiao/phaser-prize/master/',
         crossOrigin: 'anonymous',
     },
     physics: {
